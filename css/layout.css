@@ -1,0 +1,126 @@
+.inner {
+    max-width: 1410px;
+    margin: 0 auto;
+}
+
+@media(max-width:1440px) {
+
+    /* 1410에서 30을 더해서 1440이 됐음 */
+    .inner {
+        margin: 0 16px;
+    }
+
+}
+
+.default {
+    padding: 120px 0;
+}
+
+.default.bg {
+    background: #f9f9f9;
+}
+
+.flx {
+    display: flex;
+    gap: 30px;
+}
+
+.flx>* {
+    flex: 1;
+}
+
+.flx img {
+    width: 100%;
+}
+
+@media(max-width:540px) {
+
+    /* 모바일이 보통 500px 넘지 않는다. */
+    .flx {
+        /* flex의 방향만 바꾸면된다. */
+        flex-direction: column;
+        gap: 40px;
+    }
+}
+
+.mbtn {
+    /* 반응형 */
+    display: none;
+}
+
+@media(max-width:768px) {
+    .mbtn {
+        /* 반응형일때 메뉴버튼 */
+        display: block;
+        position: fixed;
+        top: 40px;
+        right: 16px;
+        z-index: 999;
+
+        width: 40px;
+        height: 40px;
+        background: #fff;
+        border: 1px solid #ddd;
+
+        font-size: 0;
+        /* 접근성을 따지면 fz0 적으면 안된다. */
+    }
+
+    /* 메뉴 버튼바 만들기 */
+    .mbtn::before {
+        content: "";
+        position: absolute;
+        top: 8px;
+        left: 4px;
+        right: 4px;
+        height: 2px;
+        background: #333;
+    }
+
+    .mbtn.on::before {
+        display: none;
+    }
+
+    .mbtn::after {
+        content: "";
+        position: absolute;
+        bottom: 8px;
+        left: 4px;
+        right: 4px;
+        height: 2px;
+        background: #333;
+    }
+
+    .mbtn span::before {
+        content: "";
+        position: absolute;
+        top: 18px;
+        left: 4px;
+        right: 4px;
+        height: 2px;
+        background: #333;
+    }
+
+    .mbtn.on span::before {
+        transform: rotate(45deg);
+    }
+
+    .mbtn.on::after {
+        display: none;
+    }
+
+    .mbtn span::after {
+        /* .mbtn span::before 같은좌표 적어줘야한다. */
+        content: "";
+        position: absolute;
+        top: 18px;
+        left: 4px;
+        right: 4px;
+        height: 2px;
+        background: #333;
+    }
+
+    .mbtn.on span::after {
+        transform: rotate(-45deg);
+    }
+}
